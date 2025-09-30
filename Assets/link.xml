@@ -1,0 +1,6 @@
+<linker>
+  <assembly fullname="Google.Protobuf" preserve="all"/>
+  <assembly fullname="Grpc.Core" preserve="all"/>
+  <assembly fullname="Grpc.Net.Client" preserve="all"/>
+  <assembly fullname="Grpc.Net.Client.Web" preserve="all"/>
+</linker>
