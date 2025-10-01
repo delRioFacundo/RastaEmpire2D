@@ -1,0 +1,66 @@
+syntax = "proto3";
+
+package user;
+
+import "google/protobuf/timestamp.proto";
+
+option go_package = "github.com/rasta/Rasta/proto";
+
+// An item in the user's inventory.
+message Item {
+  string item_name = 1;
+  google.protobuf.Timestamp acquired_time = 2;
+}
+
+// The User object.
+message User {
+  string user_id = 1;
+  google.protobuf.Timestamp creation_time = 2;
+  google.protobuf.Timestamp last_auth_time = 3;
+  double money = 4;
+  repeated Item inventory = 5;
+}
+
+// The request message for creating a user.
+message CreateUserRequest {
+  bytes credentials = 1;
+}
+
+// The response message for creating a user.
+message CreateUserResponse {
+  User user = 1;
+}
+
+// The request message for getting a user.
+message GetUserRequest {
+  string user_id = 1;
+}
+
+// The response message for getting a user.
+message GetUserResponse {
+  User user = 1;
+}
+
+// The request message for checking if a user exists.
+message UserExistsRequest {
+  // The user's L2 authentication credentials.
+  bytes credentials = 1;
+}
+
+// The response message for checking if a user exists.
+message UserExistsResponse {
+  // Whether the user exists or not.
+  bool exists = 1;
+  // The user's ID.
+  string user_id = 2;
+}
+
+// The user service definition.
+service UserService {
+  // Creates a new user.
+  rpc CreateUser(CreateUserRequest) returns (CreateUserResponse) {}
+  // Retrieves a user.
+  rpc GetUser(GetUserRequest) returns (GetUserResponse) {}
+  // Checks if a user exists.
+  rpc UserExists(UserExistsRequest) returns (UserExistsResponse) {}
+}
