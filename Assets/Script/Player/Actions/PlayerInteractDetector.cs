@@ -64,6 +64,14 @@ public class PlayerInteractDetector : MonoBehaviour
             {
                 InteractionUI.Instance.Show(best.Prompt);
                 EventsManagerSpaar.TriggerEvent(EventTypeSpaar.OpenPopup, "Interaction");
+                print("best es " + best);
+
+                if (best is PlantInteractable pi && pi.plant != null)
+                {
+                    EventsManagerSpaar.TriggerEvent(EventTypeSpaar.PlantDetected, pi.plant);
+                    print("Disparando evento de planta detectada");
+                }
+
 
                 // si es planta, guardarla
                 _player.CurrentPlant = best as PlantInteractable;

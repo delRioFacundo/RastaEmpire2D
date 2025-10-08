@@ -68,7 +68,10 @@ public enum EventTypeSpaar
 
     HarvestComplete,
 
-    /// 
+    UpdatePanelOptionsPlant,
+
+
+
     ShaderSmoked,
 
     /// Data Base /////
@@ -89,5 +92,10 @@ public enum EventTypeSpaar
 
     OpenPopup,
     ClosePopup,
+
+
+    ///////Plant ////////
+    
+    PlantDetected, 
 
 }

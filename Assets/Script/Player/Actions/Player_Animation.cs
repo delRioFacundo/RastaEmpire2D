@@ -199,6 +199,7 @@ public class Player_Animation : MonoBehaviour
         _anim.SetBool("isWatering", value);
     }
 
+
     // Este método será llamado desde el evento de la animación
     public void OnWaterAnimationEnd()
     {
@@ -208,6 +209,44 @@ public class Player_Animation : MonoBehaviour
         // Opcional: forzar a Idle en la última dirección
         ApplyFlipAndParams(false, _currentDir, _lastFacing);
         EventsManagerSpaar.TriggerEvent(EventTypeSpaar.ChangeStatePlayer, "Idle");
+        EventsManagerSpaar.TriggerEvent(EventTypeSpaar.CambiarPanel, "Panel Game");
+        player.plant.Water();
+    }
+
+
+    public void SetFertilizing(bool value)
+    {
+        _anim.SetBool("isFertilizing", value);
+    }
+    // Este método será llamado desde el evento de la animación
+    public void OnFertilizeAnimationEnd()
+    {
+        // Apagar el bool
+        _anim.SetBool("isFertilizing", false);
+
+        // Opcional: forzar a Idle en la última dirección
+        ApplyFlipAndParams(false, _currentDir, _lastFacing);
+        EventsManagerSpaar.TriggerEvent(EventTypeSpaar.ChangeStatePlayer, "Idle");
+        EventsManagerSpaar.TriggerEvent(EventTypeSpaar.CambiarPanel, "Panel Game");
+        player.plant.Fertilize();
+    }
+
+
+    public void SetProtectionSpray(bool value)
+    {
+        _anim.SetBool("isProtectionSpray", value);
+    }
+    // Este método será llamado desde el evento de la animación
+    public void OnProtectionSprayAnimationEnd()
+    {
+        // Apagar el bool
+        _anim.SetBool("isProtectionSpray", false);
+
+        // Opcional: forzar a Idle en la última dirección
+        ApplyFlipAndParams(false, _currentDir, _lastFacing);
+        EventsManagerSpaar.TriggerEvent(EventTypeSpaar.ChangeStatePlayer, "Idle");
+        EventsManagerSpaar.TriggerEvent(EventTypeSpaar.CambiarPanel, "Panel Game");
+        player.plant.ProtectionSpray();
     }
 
 }

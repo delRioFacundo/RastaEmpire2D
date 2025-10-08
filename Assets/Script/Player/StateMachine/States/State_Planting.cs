@@ -15,7 +15,7 @@ public class State_Planting : IState
 
     public void ExitState()
     {
-    
+        EventsManagerSpaar.TriggerEvent(EventTypeSpaar.ClosePopup, "Interaction");
     }
 
     public void FixedUpdateState()

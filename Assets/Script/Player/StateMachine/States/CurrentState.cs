@@ -7,6 +7,8 @@ public class CurrentState
     public const string State_Smoke = "State_Smoke";
     public const string State_Planting = "State_Planting";
     public const string State_Water = "State_Water";
+    public const string State_Fertilize = "State_Fertilize";
+    public const string State_ProtectionSpray = "State_ProtectionSpray";
 
 
 }

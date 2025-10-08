@@ -21,6 +21,7 @@ public class Player : MonoBehaviour
     public PlantHarvestUI plantHarvest;
 
     public PlantInteractable CurrentPlant { get; set; }
+    public Plant plant;
 
 
     void Awake()
@@ -61,6 +62,15 @@ public class Player : MonoBehaviour
     {
         EventsManagerSpaar.SubscribeToEvent(EventTypeSpaar.ShaderSmoked, ShaderSmoked);
         EventsManagerSpaar.SubscribeToEvent(EventTypeSpaar.ChangeStatePlayer, changeStatePlayer);
+        EventsManagerSpaar.SubscribeToEvent(EventTypeSpaar.PlantDetected, OnPlantDetected);
+
+    }
+
+
+    private void OnPlantDetected(object[] parameterContainer)
+    {
+        var p = (Plant)parameterContainer[0];
+        plant = p;
     }
 
     private void changeStatePlayer(object[] parameterContainer)
@@ -87,9 +97,12 @@ public class Player : MonoBehaviour
             case "Water":
                 stateMachine.ChangeState(new State_Water(this)); // por ahora no hay estado planting,
                 break;
-            /* case "Fertilizing":
-                stateMachine.ChangeState(new State_Fertilizing(this)); // por ahora no hay estado fertilizing,
-                break; */
+            case "Fertilize":
+                stateMachine.ChangeState(new State_Fertilize(this)); // por ahora no hay estado fertilizing,
+                break;
+            case "ProtectionSpray":
+                stateMachine.ChangeState(new State_ProtectionSpray(this)); // por ahora no hay estado
+                break;
             default:
                 Debug.LogWarning($"[Player] Estado no reconocido: {_state}");
                 break;
