@@ -15,42 +15,15 @@ public class testBackend : MonoBehaviour
     public TMP_Text tokenText; 
     async void Start()
     {
-        var username = "facu";
-        var password = "1234";
-
-        // Si tu backend espera "facu:1234"
-        var creds = "my-l2-credentials";//$"{username}:{password}";
-
-        var channel = GrpcChannel.ForAddress("https://rasta-app-2nou22vbya-ew.a.run.app:443", new GrpcChannelOptions
-        {
-            HttpHandler = new GrpcWebHandler(new HttpClientHandler())
-        });
-
-        var client = new Auth.AuthClient(channel);
-
-        var request = new auth.AuthRequest
-        {
-            Credentials = Google.Protobuf.ByteString.CopyFromUtf8(creds)
-        };
-
         try
         {
-            var reply = await client.AuthenticateAsync(request);
-            Debug.Log("Token: " + reply.Token);
-            tokenText.text = reply.Token;
+            string token = await AuthService.AuthenticateAndGetTokenAsync("facu", "1234");
+            tokenText.text = token;
         }
-        catch (RpcException e)
+        catch (System.Exception ex)
         {
-            Debug.LogError($"gRPC Error: {e.Status.Detail}");
-            tokenText.text = "Error: " + e.Status.Detail;
+            tokenText.text = "Error: " + ex.Message;
         }
-
-
-        /*   var reply = await client.AuthenticateAsync(request);
-          Debug.Log("Token: " + reply.Token); */
-
-
-
     }
 }
 
