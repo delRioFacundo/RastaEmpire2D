@@ -1,0 +1,74 @@
+{
+    "name": "UIControls",
+    "maps": [
+        {
+            "name": "UIControl",
+            "id": "8f46a2ba-e5e5-4038-9a02-6ed1d1cfec6c",
+            "actions": [
+                {
+                    "name": "Rascar",
+                    "type": "Button",
+                    "id": "ef73419f-83cf-40ff-92cd-ecfd47dcc10b",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                },
+                {
+                    "name": "NoRascar",
+                    "type": "Button",
+                    "id": "bf0e8f8c-609d-4c88-9a2c-d03b9768eba3",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                },
+                {
+                    "name": "MousePosition",
+                    "type": "Value",
+                    "id": "22dc533c-90fd-4113-a029-545a39d2df51",
+                    "expectedControlType": "Vector2",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": true
+                }
+            ],
+            "bindings": [
+                {
+                    "name": "",
+                    "id": "1bce2f6b-3b68-4891-b4bc-4e4c802571a6",
+                    "path": "<Mouse>/leftButton",
+                    "interactions": "Press",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Rascar",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "75c31c47-54a6-448a-8cfa-79061f21a507",
+                    "path": "<Mouse>/leftButton",
+                    "interactions": "Press(behavior=1)",
+                    "processors": "",
+                    "groups": "",
+                    "action": "NoRascar",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "2329a81b-61f3-423f-9e61-b7ad06886ad3",
+                    "path": "<Mouse>/position",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "MousePosition",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                }
+            ]
+        }
+    ],
+    "controlSchemes": []
+}

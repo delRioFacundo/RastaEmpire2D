@@ -3,6 +3,7 @@ using UnityEngine;
 public class PanelPlanting : MonoBehaviour
 {
    [SerializeField] string panelName;
+   
 
     void Start()
     {

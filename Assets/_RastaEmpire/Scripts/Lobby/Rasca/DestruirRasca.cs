@@ -21,7 +21,7 @@ public class DestruirRasca : MonoBehaviour
 
     public void Destruir()
     {
-     /*    if (!dataPlayer.startModeGestion)
+       /*  if (!dataPlayer.startModeGestion)
         {
             EventsManager.TriggerEvent(EventType.Panels, "c");
            // EventsManager.TriggerEvent(EventType.Panels, "");
@@ -35,8 +35,8 @@ public class DestruirRasca : MonoBehaviour
         Cursor.visible = false;
         Cursor.lockState = CursorLockMode.Locked;
         EventsManager.TriggerEvent(EventType.BlockPlayerInput, false);
- */
-        Destroy(rasca);
+
+        Destroy(rasca); */
     }
 
     public void Crear()
